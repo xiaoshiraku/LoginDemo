@@ -1,0 +1,61 @@
+# 应用服务 WEB 访问接口
+server:
+  port: 8081
+# 数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/test
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+
+# mybatisplus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com.cy.mapper/*.xml
+  type-aliases-package: com.cy.domain
+
+config:
+  jwt:
+    secret: login123456  # 加密密钥
+    expire: 36000  # token有效时长
+    header: token # header名称
+
+# Redis配置
+redis:
+  host: localhost
+  port: 6379
+  password:
+  database: 0
+  timeout: 3000ms
+  lettuce:
+  pool:
+    max-active: 8
+    max-wait: -1ms
+    max-idle: 8
+    min-idle: 0
+
+# 验证码设置
+app:
+  verification:
+    code:
+      # 验证码长度
+      length: 6
+      # 验证码过期时间(单位为分钟)
+      expire: 5
+      # 最大验证次数
+      max-times: 5
+      # 发送间隔
+      send-interval: 60
+
+# 阿里云设置
+aliyun:
+  access-key-id: 你的AccessKeyId
+  access-key-secret: 你的AccessKeySecret
+  sign-name: 你的短信签名
+  verify-code-template: 你的验证码模板CODE
